@@ -24,49 +24,46 @@ namespace DZ_2
 
                 Console.Write("Выберите пункт меню ->");
 
-                string str = Console.ReadLine();
-                bool res = Int32.TryParse(str, out menu);
-                if (!res) { menu = -1; continue; }
-            
+                //string str = Console.ReadLine();
+                //bool res = Int32.TryParse(Console.ReadLine(), out menu);
+                //if (!res) { menu = -1; continue; }
+                Int32.TryParse(Console.ReadLine(), out menu);
+
                 Random rnd = new Random();
-                if (menu == 1)
+                switch (menu)
                 {
-                    int a = rnd.Next(0, 100);
-                    int b = rnd.Next(0, 100);
-                    int c = rnd.Next(0, 100);
-                    Console.WriteLine(a + "  " + b + "  " + c);
-                }
-
-                else if (menu == 2)
-                {
-                    Console.WriteLine("5");
-                    Console.WriteLine("10");
-                    Console.WriteLine("21");
-                }
-
-                else if (menu == 3)
-                {
-                    bool convert;
-                    int cm=0;
-                    int meter=0;
-                    do
-                    {
-                        Console.Write("Введите расстояние в см: ");
-                        string str_cm = Console.ReadLine();
-                        convert = Int32.TryParse(str_cm, out cm);
-                        if (convert)
+                    case 1:
+                        int a = rnd.Next(0, 100);
+                        int b = rnd.Next(0, 100);
+                        int c = rnd.Next(0, 100);
+                        Console.WriteLine(a + "  " + b + "  " + c);
+                        break;
+                    case 2:
+                        Console.WriteLine("5");
+                        Console.WriteLine("10");
+                        Console.WriteLine("21");
+                        break;
+                    case 3:
+                        bool convert;
+                        int cm=0;
+                        int meter=0;
+                        do
                         {
-                            meter = cm / 100;
-                        } 
-                    } while (!convert);
-                    Console.WriteLine("Количество полных метров: " + meter);
-                }
-
-                else if (menu == 4)
-                {
-                    int days = 234;                       
-                    Console.WriteLine("Количество дней: " + days);
-                    Console.WriteLine("Количество полных недель: " + days/7);
+                            Console.Write("Введите расстояние в см: ");
+                            string str_cm = Console.ReadLine();
+                            convert = Int32.TryParse(str_cm, out cm);
+                            if (convert)
+                            {
+                                meter = cm / 100;
+                            } 
+                        } while (!convert);
+                        Console.WriteLine("Количество полных метров: " + meter);
+                        break;
+                    case 4:
+                        int days = 234;                       
+                        Console.WriteLine("Количество дней: " + days);
+                        Console.WriteLine("Количество полных недель: " + days/7);
+                        break;
                 }
 
                 Console.ReadKey();
